@@ -163,6 +163,40 @@ Setup Role based authorization
 * Monitor disk utlization and send mail if > 80% 
 
 * Process Management
+********************************************************************************************************
+
+Step 1: Install the Role-Based Authorization Strategy Plugin
+Log in to Jenkins with admin privileges.
+Go to Manage Jenkins > Manage Plugins.
+Select the Available tab and search for "Role-Based Authorization Strategy."
+Check the plugin and click Install without restart.
+
+
+Step 2: Configure the Role-Based Authorization Strategy
+Go to Manage Jenkins > Configure Global Security.
+Under Authorization, select Role-Based Strategy.
+Click Save to apply the changes.
+
+
+Step 3: Define Roles
+Go to Manage Jenkins > Manage and Assign Roles > Manage Roles.
+Under the Roles section:
+Add global roles like admin, developer, or viewer.
+Assign permissions for each role by checking the appropriate boxes.
+Add project-specific roles if necessary, defining which jobs they can access.
+
+
+Step 4: Assign Roles to Users
+Go to Manage Jenkins > Manage and Assign Roles > Assign Roles.
+Under Global Roles:
+Add a username in the User/Group to Add field.
+Assign roles by selecting the checkboxes for the desired user.
+If you have project roles, assign users to those roles under the Project Roles section.
+
+
+Step 5: Test Role Assignments
+Log in with a non-admin user account.
+Verify that the user can only access Jenkins features or jobs based on the assigned roles.
 
 **********************************************************************************************************
 
@@ -237,12 +271,12 @@ The script gracefully handles errors, such as invalid arguments, missing source 
 
  
 ********************************************************************************************************************
-pipeline {   
-    agent any 
-    tools{
-        jdk 'jdk11'
-        maven 'maven3'
-    }
+    pipeline {   
+        agent any 
+         tools{
+           jdk 'jdk11'
+           maven 'maven3'
+     }
     
     options {
         timeout(time: 5, unit: 'MINUTES') //  for timeout 
@@ -290,8 +324,8 @@ pipeline {
         failure {
             echo "Pipeline failed for branch ${params.BRANCH}"
         }
+       }
     }
-}
 
 *********************************************************************************************************************
 Step 1:-> Setup Tools
