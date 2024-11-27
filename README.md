@@ -149,6 +149,9 @@ This process sets up a Jenkins slave running in an AWS VPC entirely through the 
 # Q3
 Setup Role based authorization 
 **************************************************************************************************
+![photo_6210525244502949751_y](https://github.com/user-attachments/assets/0ed7a40c-968a-4f04-b628-bb1f16ce4198)
+![photo_6210525244502949752_y](https://github.com/user-attachments/assets/914aab6d-24d7-40e4-a67e-f1fc9f7fba45)
+**************************************************************************************************
 
 # Q4
  Create a pipeline to execute a shell script 
