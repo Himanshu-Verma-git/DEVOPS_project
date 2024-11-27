@@ -152,19 +152,6 @@ Setup Role based authorization
 ![photo_6210525244502949751_y](https://github.com/user-attachments/assets/0ed7a40c-968a-4f04-b628-bb1f16ce4198)
 ![photo_6210525244502949752_y](https://github.com/user-attachments/assets/914aab6d-24d7-40e4-a67e-f1fc9f7fba45)
 **************************************************************************************************
-
-# Q4
- Create a pipeline to execute a shell script 
-
-* on git 
-
-* on scripting task 
-
-* Monitor disk utlization and send mail if > 80% 
-
-* Process Management
-********************************************************************************************************
-
 Step 1: Install the Role-Based Authorization Strategy Plugin
 Log in to Jenkins with admin privileges.
 Go to Manage Jenkins > Manage Plugins.
@@ -197,6 +184,42 @@ If you have project roles, assign users to those roles under the Project Roles s
 Step 5: Test Role Assignments
 Log in with a non-admin user account.
 Verify that the user can only access Jenkins features or jobs based on the assigned roles.
+
+**************************************************************************************************
+# Q4
+ Create a pipeline to execute a shell script 
+
+* on git 
+
+* on scripting task 
+
+* Monitor disk utlization and send mail if > 80% 
+
+* Process Management
+********************************************************************************************************
+Step 1: Create a Git Repository for the Shell Script
+Create a Git repository to store the shell script. This repository will be used to track changes to the script and manage version control. Push your shell script file into the repository to make it accessible for execution from any environment where the pipeline runs.
+
+Step 2: Set Up a Jenkins Pipeline for Script Execution
+In Jenkins, create a new pipeline job. Define the source code repository (Git) in the pipeline configuration. This repository will contain the shell script. Ensure Jenkins has access to the repository by configuring the appropriate credentials and repository URL for the Git repository.
+
+Step 3: Define the Scripting Task in Jenkins
+In the Jenkins pipeline, define a build step to execute the shell script. This can be done within the pipeline script using the sh step, specifying the shell script path from the Git repository. This task will execute the script on the Jenkins agent when triggered.
+
+Step 4: Monitor Disk Utilization in the Pipeline
+Add a monitoring task in the pipeline to check disk utilization on the Jenkins agent. Use shell commands to check available disk space, such as df -h. If disk usage exceeds 80%, trigger an alert step to notify the relevant team or send an email.
+
+Step 5: Implement Email Notification for High Disk Usage
+In case disk usage exceeds 80%, configure Jenkins to send an email alert. Set up an email notification system in Jenkins by providing SMTP server details. Include disk utilization details in the email body and specify the recipients who should receive the alerts when this threshold is crossed.
+
+Step 6: Add Process Management to the Pipeline
+Ensure process management within the pipeline by monitoring running processes and resources. In the script, include logic to identify resource-hogging processes using commands like top or ps. If any process exceeds a predefined threshold, take appropriate actions such as killing or notifying the user.
+
+Step 7: Test and Validate the Pipeline
+After configuring all the steps, test the pipeline to ensure proper execution. Trigger the pipeline and check if the shell script runs as expected, disk usage is monitored, and email notifications are sent when thresholds are exceeded. Verify that process management works and resource utilization is properly handled.
+
+Step 8: Schedule Regular Execution and Monitoring
+Once the pipeline is validated, configure a schedule for regular execution in Jenkins (e.g., daily or weekly). This ensures that disk utilization is consistently monitored, and any high usage is promptly addressed through email alerts. Scheduling ensures that the system runs smoothly without manual intervention.
 
 **********************************************************************************************************
 
