@@ -197,6 +197,8 @@ Verify that the user can only access Jenkins features or jobs based on the assig
 
 * Process Management
 ********************************************************************************************************
+# the script is ./disk_util.sh
+********************************************************************************************************
 Step 1: Create a Git Repository for the Shell Script
 Create a Git repository to store the shell script. This repository will be used to track changes to the script and manage version control. Push your shell script file into the repository to make it accessible for execution from any environment where the pipeline runs.
 
